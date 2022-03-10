@@ -23,7 +23,7 @@ export default {
 
 
 #app {
-  font-family: montserrat, sans-serif;
+  font-family: Montserrat;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #1E2D3B;
