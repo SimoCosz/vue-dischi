@@ -1,20 +1,19 @@
 <template>
   <div id="app">
     <NavComponent />
-    <MainComponent />
+    <CardListComponent />
   </div>
 </template>
 
 <script>
 import NavComponent from './components/NavComponent.vue'
-import MainComponent from './components/MainComponent.vue'
-
+import CardListComponent from './components/CardListComponent.vue'
 
 export default {
   name: 'App',
   components: {
     NavComponent,
-    MainComponent,
+    CardListComponent,
   }
 }
 </script>

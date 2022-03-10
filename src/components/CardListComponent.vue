@@ -1,9 +1,11 @@
 <template>
-  <div class="card-wrapper">
-    <CardComponent v-for="(disc, i) in discs" :key="i"
-    :song='disc'
-    />
-  </div>
+  <main class="container">
+    <div class="card-wrapper">
+      <CardComponent v-for="(disc, i) in discs" :key="i"
+      :song='disc'
+      />
+    </div>
+  </main>
 </template>
 
 <script>
@@ -43,8 +45,10 @@ export default {
 
 <style lang="scss" scoped>
   .card-wrapper{
+    height: max-content;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 10px 20px;
+    padding: 40px;
   }
 </style>

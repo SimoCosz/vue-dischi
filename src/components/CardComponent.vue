@@ -23,14 +23,31 @@ export default {
 
 <style lang="scss" scoped>
   .card{
-    background-color: #2E3A46;
-    width: calc((100% / 5) - 10px);
+    background-color: rgba(white, 0.1);
+    width: calc((100% / 5) - 20px);
     padding: 10px;
     text-align: center;
     color: white;
+
+    .card_title{
+      max-width: 130px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0 auto;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .card_author, .card_year{
+      color: #7E7F78;
+    }
     
-    img{
-      aspect-ratio: 1/1;
+
+    figure{
+      margin: 0 auto;
+      img{
+        aspect-ratio: 1/1;
+      }
     }
   }
 </style>
