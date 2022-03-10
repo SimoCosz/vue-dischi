@@ -31,8 +31,8 @@ export default {
     cursor: pointer;
 
     &:hover{
-      box-shadow: 10px 10px 10px black;
-      transition: 100ms ease-in-out;
+      box-shadow: 0 0 20px gold;
+      transition: 200ms ease-in-out;
 
       .card_author, .card_year{
         color: white;
