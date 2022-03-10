@@ -28,6 +28,18 @@ export default {
     padding: 10px;
     text-align: center;
     color: white;
+    cursor: pointer;
+
+    &:hover{
+      box-shadow: 10px 10px 10px black;
+      transition: 100ms ease-in-out;
+
+      .card_author, .card_year{
+        color: white;
+        text-shadow: 0 0 10px gold;
+        transition: 100ms ease-in-out;
+      }
+    }
 
     .card_title{
       max-width: 130px;
