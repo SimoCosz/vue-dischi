@@ -15,10 +15,9 @@ export default {
 <style lang="scss" scoped>
   .header{
     background-color: rgba(white, 0.1);
-
     .logo{
       width: 50px;
     }
-    }
+  }
 
 </style>

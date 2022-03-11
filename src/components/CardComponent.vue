@@ -12,7 +12,6 @@
 <script>
 export default {
   props: {
-
     song: {
       type: Object,
       required: true,
@@ -31,10 +30,10 @@ export default {
     cursor: pointer;
 
     &:hover{
-      box-shadow: 0 0 20px gold;
+      box-shadow: 0 0 10px gold;
       transition: 200ms ease-in-out;
 
-      .card_author, .card_year{
+      .card_author, .card_year, .card_title{
         color: white;
         text-shadow: 0 0 10px gold;
         transition: 100ms ease-in-out;
