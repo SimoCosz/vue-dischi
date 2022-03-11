@@ -49,9 +49,9 @@ export default {
         if (this.selectedGenre != ""){
           if ( this.discs[i].genre == this.selectedGenre){
             filteredDiscs.push(this.discs[i])
+        }
         } else {
             filteredDiscs.push(this.discs[i])
-        }
         }
       }
       return filteredDiscs
