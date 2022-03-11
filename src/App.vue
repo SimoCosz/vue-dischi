@@ -31,6 +31,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #1E2D3B;
-  // min-height: 800px;
+  min-height: 800px;
 }
 </style>

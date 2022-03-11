@@ -2,10 +2,10 @@
   <main class="container">
     <select v-model="selectedGenre" name="genre" id="genre-select">
       <option value="">All</option>
-      <option value="1">Rock</option>
-      <option value="2">Pop</option>
-      <option value="3">Jazz</option>
-      <option value="4">Metal</option>
+      <option value="Rock">Rock</option>
+      <option value="Pop">Pop</option>
+      <option value="Jazz">Jazz</option>
+      <option value="Metal">Metal</option>
     </select>
     <div class="card-wrapper">
       <CardComponent v-for="(disc, i) in setFilter()" :key="i"
@@ -49,10 +49,10 @@ export default {
         if (this.selectedGenre != ""){
           if ( this.discs[i].genre == this.selectedGenre){
             filteredDiscs.push(this.discs[i])
-        }
+          }
         } else {
             filteredDiscs.push(this.discs[i])
-        }
+          }
       }
       return filteredDiscs
     }
