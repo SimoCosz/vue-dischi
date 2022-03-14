@@ -4,6 +4,10 @@
       <option value="">All</option>
       <option v-for="(genre, i) in genreList" :key="i" :value="genre">{{genre}}</option>
     </select>
+    <select v-model="selectedAuthor" name="author" id="genre-select">
+      <option value="">All</option>
+      <option v-for="(author, i) in authorList" :key="i" :value="author">{{author}}</option>
+    </select>
     <div class="card-wrapper">
       <CardComponent v-for="(disc, i) in setFilter()" :key="i"
       :song='disc'
@@ -24,7 +28,19 @@ export default {
     return {
       discs: [],
       selectedGenre: '',
+      selectedAuthor: '',
       genreList: [],
+      authorList: [],
+    }
+  },
+
+  computed: {
+    filterDiscs: function(){
+      return this.discs.filter(el => {
+        const {genre, author} = el
+        return genre.toLowerCase().includes(this.genrelist.toLowerCase()) &&
+        author.toLowerCase().includes(this.authorList.toLowerCase())
+      })
     }
   },
 
@@ -37,7 +53,16 @@ export default {
         .then(res => {
           this.discs = res.data.response
           this.genreFilter(this.discs)
+          this.authorFilter(this.discs)
       })
+    },
+
+    authorFilter: function(discs){
+      discs.forEach((el) => {
+        if(!this.authorList.includes(el.author)){
+          this.authorList.push(el.author)
+        }
+      });
     },
 
     genreFilter: function(discs){
@@ -53,8 +78,8 @@ export default {
 
       for (let i = 0; i < this.discs.length; i++){
 
-        if (this.selectedGenre != ""){
-          if ( this.discs[i].genre == this.selectedGenre){
+        if (this.selectedGenre != "" || this.selectedAuthor != ""){
+          if ( this.discs[i].genre == this.selectedGenre || this.discs[i].author == this.selectedAuthor){
             filteredDiscs.push(this.discs[i])
           }
         } else {
