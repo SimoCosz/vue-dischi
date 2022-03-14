@@ -6,15 +6,6 @@
       @searchGenre='setGenre'
       @searchAuthor='setAuthor'
        />
-  
-    <!-- <select v-model="selectedGenre" name="genre" id="genre-select">
-      <option value="">All</option>
-      <option v-for="(genre, i) in genreList" :key="i" :value="genre">{{genre}}</option>
-    </select>
-    <select v-model="selectedAuthor" name="author" id="genre-select">
-      <option value="">All</option>
-      <option v-for="(author, i) in authorList" :key="i" :value="author">{{author}}</option>
-    </select> -->
     <div class="card-wrapper">
       <CardComponent v-for="(disc, i) in filterDiscs" :key="i"
       :song='disc'
