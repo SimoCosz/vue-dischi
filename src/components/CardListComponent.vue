@@ -2,10 +2,7 @@
   <main class="container">
     <select v-model="selectedGenre" name="genre" id="genre-select">
       <option value="">All</option>
-      <option value="Rock">Rock</option>
-      <option value="Pop">Pop</option>
-      <option value="Jazz">Jazz</option>
-      <option value="Metal">Metal</option>
+      <option v-for="(genre, i) in genreList" :key="i" :value="genre">{{genre}}</option>
     </select>
     <div class="card-wrapper">
       <CardComponent v-for="(disc, i) in setFilter()" :key="i"
@@ -27,6 +24,7 @@ export default {
     return {
       discs: [],
       selectedGenre: '',
+      genreList: [],
     }
   },
 
@@ -38,7 +36,16 @@ export default {
         axios.get('https://flynn.boolean.careers/exercises/api/array/music')
         .then(res => {
           this.discs = res.data.response
+          this.genreFilter(this.discs)
       })
+    },
+
+    genreFilter: function(discs){
+      discs.forEach((el) => {
+        if(!this.genreList.includes(el.genre)){
+          this.genreList.push(el.genre)
+        }
+      });
     },
 
     setFilter: function(){
