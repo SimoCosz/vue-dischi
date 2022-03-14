@@ -1,15 +1,22 @@
 <template>
   <main class="container">
-    <select v-model="selectedGenre" name="genre" id="genre-select">
+      <SelectComponent
+      :genreList='genreList'
+      :authorList='authorList'
+      @searchGenre='setGenre'
+      @searchAuthor='setAuthor'
+       />
+  
+    <!-- <select v-model="selectedGenre" name="genre" id="genre-select">
       <option value="">All</option>
       <option v-for="(genre, i) in genreList" :key="i" :value="genre">{{genre}}</option>
     </select>
     <select v-model="selectedAuthor" name="author" id="genre-select">
       <option value="">All</option>
       <option v-for="(author, i) in authorList" :key="i" :value="author">{{author}}</option>
-    </select>
+    </select> -->
     <div class="card-wrapper">
-      <CardComponent v-for="(disc, i) in setFilter()" :key="i"
+      <CardComponent v-for="(disc, i) in filterDiscs" :key="i"
       :song='disc'
       />
     </div>
@@ -17,12 +24,14 @@
 </template>
 
 <script>
-import CardComponent from './CardComponent.vue'
+import CardComponent from './CardComponent.vue';
+import SelectComponent from './SelectComponent.vue';
 import axios from 'axios';
 
 export default {
   components: {
     CardComponent,
+    SelectComponent,
   },
   data() {
     return {
@@ -38,8 +47,8 @@ export default {
     filterDiscs: function(){
       return this.discs.filter(el => {
         const {genre, author} = el
-        return genre.toLowerCase().includes(this.genrelist.toLowerCase()) &&
-        author.toLowerCase().includes(this.authorList.toLowerCase())
+        return genre.toLowerCase().includes(this.selectedGenre.toLowerCase()) &&
+                author.toLowerCase().includes(this.selectedAuthor.toLowerCase())
       })
     }
   },
@@ -73,21 +82,13 @@ export default {
       });
     },
 
-    setFilter: function(){
-      let filteredDiscs = [];
+    setGenre: function(filterGenre){
+      this.selectedGenre = filterGenre
+    },
 
-      for (let i = 0; i < this.discs.length; i++){
-
-        if (this.selectedGenre != "" || this.selectedAuthor != ""){
-          if ( this.discs[i].genre == this.selectedGenre || this.discs[i].author == this.selectedAuthor){
-            filteredDiscs.push(this.discs[i])
-          }
-        } else {
-            filteredDiscs.push(this.discs[i])
-          }
-      }
-      return filteredDiscs
-    }
+    setAuthor: function(filterAuthor){
+      this.selectedAuthor = filterAuthor
+    },
   },
 
   created() {
@@ -103,17 +104,7 @@ export default {
   .container{
     position: relative;
 
-    #genre-select{
-      width: 200px;
-      border: none;
-      background-color: rgba(white, 0.3);
-      margin-right: 100px;
-      margin-top: 30px;
-      padding: 0 5px;
-      border-radius: 4px;
-      color: white;
-      font-weight: 700;
-    }
+    
 
     .card-wrapper{
       min-height: 100%;
